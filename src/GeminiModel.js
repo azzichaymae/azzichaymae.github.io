@@ -1,4 +1,4 @@
-const API_URL = "https://azzichaymae-github-kaq69ve5k-chaymae.vercel.app/api/chat";
+const API_URL = "https://azzichaymae-github-io.vercel.app/api/chat";
 
 
 export const sendChatMessage = async (question, history, systemPrompt) => {

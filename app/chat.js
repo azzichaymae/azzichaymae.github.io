@@ -4,7 +4,14 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "https://azzichaymae.github.io");
+  const allowedOrigins = [
+    "https://azzichaymae.github.io",
+    "http://localhost:3000",
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -15,6 +22,7 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
+
 
   const { question, history, systemPrompt } = req.body;
 
