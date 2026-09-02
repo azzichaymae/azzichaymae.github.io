@@ -68,36 +68,6 @@ const AIChat = () => {
 } finally {
   setIsTyping(false);
 }
-
-    try {
-      const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
-
-      const chat = model.startChat({
-        history: [
-          {
-            role: "user",
-            parts: [{ text: t("AIssistant.description") }],
-          },
-          ...messages.map((msg) => ({
-            role: msg.role === "assistant" ? "model" : "user",
-            parts: [{ text: msg.content }],
-          })),
-        ],
-      });
-
-      const result = await chat.sendMessage(question);
-      const aiResponse = result.response.text();
-
-      setMessages([...newMessages, { role: "assistant", content: aiResponse }]);
-    } catch (error) {
-      console.error("AI Chat Error:", error);
-      setMessages([...newMessages, { 
-        role: "assistant", 
-        content: t("AI.errorGeneric")
-      }]);
-    } finally {
-      setIsTyping(false);
-    }
   }, [input, messages, t]);
 
   const handleKeyPress = (e) => {
