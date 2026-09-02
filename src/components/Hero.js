@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-stone-50"
+      className="relative min-h-[100dvh] flex flex-col justify-center items-center text-center px-6 py-16 overflow-hidden bg-stone-50"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-noise pointer-events-none" />
@@ -44,25 +44,24 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        
 
         {/* Main Heading */}
-       <motion.h1
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-heading text-stone-900 leading-[0.95] tracking-tight"
->
-  {t("Hero.greeting")}{" "}
-  <span className="text-gradient">Chaymae</span>
-</motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading text-stone-900 leading-[0.95] tracking-tight"
+        >
+          {t("Hero.greeting")}{" "}
+          <span className="text-gradient">Chaymae</span>
+        </motion.h1>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 text-lg md:text-xl lg:text-2xl text-stone-500 max-w-2xl mx-auto leading-relaxed font-light"
+          className="mt-5 text-base md:text-lg lg:text-xl text-stone-500 max-w-2xl mx-auto leading-relaxed font-light"
         >
           <Trans i18nKey="Hero.about">
             State Engineer in{" "}
@@ -76,7 +75,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center"
         >
           <motion.a
             href="#projects"
@@ -86,7 +85,7 @@ export default function Hero() {
             }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-stone-900 text-white rounded-2xl font-medium text-lg shadow-xl shadow-stone-900/20 hover:shadow-2xl hover:shadow-stone-900/30 transition-all duration-300"
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-stone-900 text-white rounded-2xl font-medium text-base shadow-xl shadow-stone-900/20 hover:shadow-2xl hover:shadow-stone-900/30 transition-all duration-300"
           >
             {t("Hero.work")}
             <FaArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
@@ -96,7 +95,7 @@ export default function Hero() {
             onClick={handleDownload}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-stone-900 border-2 border-stone-200 rounded-2xl font-medium text-lg hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-white text-stone-900 border-2 border-stone-200 rounded-2xl font-medium text-base hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
           >
             <FaDownload className="w-4 h-4 text-orange-500" />
             {t("Hero.download")}
@@ -108,7 +107,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="mt-16 mb-24 grid grid-cols-3 gap-8 max-w-md mx-auto"
+          className="mt-10 mb-4 grid grid-cols-3 gap-6 max-w-md mx-auto"
         >
           {[
             { value: "5+", label: t("Hero.years") },
@@ -116,7 +115,7 @@ export default function Hero() {
             { value: "3+", label: t("Hero.internships") },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold font-heading text-stone-900">{stat.value}</div>
+              <div className="text-xl md:text-2xl font-bold font-heading text-stone-900">{stat.value}</div>
               <div className="text-xs md:text-sm text-stone-500 mt-1">{stat.label}</div>
             </div>
           ))}
@@ -128,7 +127,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20"
       >
         <motion.button
           onClick={scrollToAbout}

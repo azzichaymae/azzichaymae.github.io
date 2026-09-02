@@ -106,8 +106,7 @@ const AIChat = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-0 sm:right-0 sm:w-[420px] sm:h-[600px] bg-white shadow-2xl flex flex-col overflow-hidden sm:rounded-3xl sm:m-6"
-          >
+className="fixed inset-0 sm:inset-auto sm:bottom-0 sm:right-0 sm:w-[420px] sm:max-w-[90vw] sm:h-[600px] sm:max-h-[85dvh] bg-white shadow-2xl flex flex-col overflow-hidden sm:rounded-3xl sm:m-6"          >
             {/* Header */}
             <div className="bg-stone-900 px-5 py-4 flex items-center justify-between text-white">
               <div className="flex items-center gap-3">
