@@ -1,15 +1,13 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
 export default async function handler(req, res) {
-  // Allow requests from your GitHub Pages site
   res.setHeader("Access-Control-Allow-Origin", "https://azzichaymae.github.io");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
@@ -18,14 +16,27 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { prompt } = req.body;
+  const { question, history, systemPrompt } = req.body;
 
-  if (!prompt) {
-    return res.status(400).json({ error: "Missing prompt" });
+  if (!question) {
+    return res.status(400).json({ error: "Missing question" });
   }
 
   try {
-    const result = await model.generateContent(prompt);
+    const chat = model.startChat({
+      history: [
+        {
+          role: "user",
+          parts: [{ text: systemPrompt || "" }],
+        },
+        ...(history || []).map((msg) => ({
+          role: msg.role === "assistant" ? "model" : "user",
+          parts: [{ text: msg.content }],
+        })),
+      ],
+    });
+
+    const result = await chat.sendMessage(question);
     const text = result.response.text();
     return res.status(200).json({ response: text });
   } catch (error) {

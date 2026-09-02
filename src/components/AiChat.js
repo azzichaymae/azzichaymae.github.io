@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { FaPaperPlane, FaRobot, FaUser, FaComments, FaTimes } from "react-icons/fa";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { sendChatMessage } from "../GeminiModel";
 import { useI18n } from "../hooks/useI18n";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,10 +25,6 @@ const AIChat = () => {
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
 
-  const genAI = React.useMemo(() => {
-    const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
-    return apiKey ? new GoogleGenerativeAI(apiKey) : null;
-  }, []);
 
   useEffect(() => {
     setMessages([{ role: "assistant", content: t("AIssistant.content") }]);
@@ -56,14 +52,22 @@ const AIChat = () => {
     setInput("");
     setIsTyping(true);
 
-    if (!genAI) {
-      setMessages([...newMessages, { 
-        role: "assistant", 
-        content: t("AI.errorConfig")
-      }]);
-      setIsTyping(false);
-      return;
-    }
+   try {
+  const aiResponse = await sendChatMessage(
+    question,
+    messages,
+    t("AIssistant.description")
+  );
+  setMessages([...newMessages, { role: "assistant", content: aiResponse }]);
+} catch (error) {
+  console.error("AI Chat Error:", error);
+  setMessages([...newMessages, {
+    role: "assistant",
+    content: t("AI.errorGeneric")
+  }]);
+} finally {
+  setIsTyping(false);
+}
 
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
@@ -94,7 +98,7 @@ const AIChat = () => {
     } finally {
       setIsTyping(false);
     }
-  }, [input, messages, genAI, t]);
+  }, [input, messages, t]);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {

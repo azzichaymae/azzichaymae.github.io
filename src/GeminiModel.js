@@ -1,11 +1,12 @@
 const API_URL = "https://azzichaymae-github-kaq69ve5k-chaymae.vercel.app/api/chat";
 
-export const generateContent = async (prompt, question) => {
+
+export const sendChatMessage = async (question, history, systemPrompt) => {
   try {
     const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ question, history, systemPrompt }),
     });
 
     if (!res.ok) {
@@ -16,6 +17,6 @@ export const generateContent = async (prompt, question) => {
     return data.response;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Sorry, I couldn't generate a response.";
+    throw error;
   }
 };
