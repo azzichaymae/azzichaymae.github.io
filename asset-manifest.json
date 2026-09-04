@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d4a2fe8e.css",
+    "main.js": "/static/js/main.c2d222e7.js",
+    "static/js/453.c6a9083d.chunk.js": "/static/js/453.c6a9083d.chunk.js",
+    "static/media/mugs-atelier.mp4": "/static/media/mugs-atelier.aa2258007128718c2bb4.mp4",
+    "static/media/Mobylis.mp4": "/static/media/Mobylis.ebf427ac91e4e2d55e00.mp4",
+    "static/media/holcim.mp4": "/static/media/holcim.c90766669611975f1763.mp4",
+    "static/media/SUPAabscence.mp4": "/static/media/SUPAabscence.2c7bf82b9065641948e5.mp4",
+    "static/media/kpi.mp4": "/static/media/kpi.c2fc01d8fb6dc446e6d6.mp4",
+    "static/media/Contactly.mp4": "/static/media/Contactly.b81661d84f081c07a2e1.mp4",
+    "static/media/microservices.png": "/static/media/microservices.8f9bc26c665d6d492f47.png",
+    "static/media/me.jpeg": "/static/media/me.8abcb0a8afa34ab822a1.jpeg",
+    "static/media/kpi.png": "/static/media/kpi.ee828586b348ae76f8c8.png",
+    "static/media/ma.png": "/static/media/ma.5390d2969d3a32de8b45.png",
+    "static/media/faragroupe.png": "/static/media/faragroupe.c04025afd1902ec8ec9b.png",
+    "static/media/holcim.png": "/static/media/holcim.a8a14f01ffebcff5fa46.png",
+    "static/media/mobylis.png": "/static/media/mobylis.5ae4bcdfbc4999654801.png",
+    "static/media/CV-fr.pdf": "/static/media/CV-fr.053fb652f8ce6f6ec389.pdf",
+    "static/media/CV-en.pdf": "/static/media/CV-en.9182eb487fc68842fdb7.pdf",
+    "static/media/contact.png": "/static/media/contact.56d83b5524eacf4f831b.png",
+    "static/media/builfolio.png": "/static/media/builfolio.b54fb42f49f4f16dec92.png",
+    "static/media/en.png": "/static/media/en.cfabd26a5e9b88d2243e.png",
+    "static/media/person.png": "/static/media/person.6515e0bd29b32ea02c36.png",
+    "static/media/ab2.jpg": "/static/media/ab2.5fd6c67986291cb9a927.jpg",
+    "static/media/fr.png": "/static/media/fr.d6f2367c0d4fa166f485.png",
+    "index.html": "/index.html",
+    "main.d4a2fe8e.css.map": "/static/css/main.d4a2fe8e.css.map",
+    "main.c2d222e7.js.map": "/static/js/main.c2d222e7.js.map",
+    "453.c6a9083d.chunk.js.map": "/static/js/453.c6a9083d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4a2fe8e.css",
+    "static/js/main.c2d222e7.js"
+  ]
+}
