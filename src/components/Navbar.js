@@ -6,8 +6,8 @@ import { useI18n } from "../hooks/useI18n";
 
 export default function Navbar() {
   const { t } = useI18n();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const [menuAnimDone, setMenuAnimDone] = useState(false);  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
@@ -50,6 +50,10 @@ export default function Navbar() {
     }
     setIsMobileMenuOpen(false);
   };
+  const toggleMobileMenu = () => {
+  if (isMobileMenuOpen) setMenuAnimDone(false);
+  setIsMobileMenuOpen(!isMobileMenuOpen);
+};
 
   return (
     <motion.nav
@@ -109,7 +113,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-stone-700 hover:text-orange-600 transition-colors p-2 rounded-lg hover:bg-stone-100"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={() => toggleMobileMenu(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
         >
@@ -120,13 +124,16 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden glass border-t border-stone-200 overflow-hidden"
-          >
+            <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      onAnimationComplete={() => setMenuAnimDone(true)}
+      className={`md:hidden glass border-t border-stone-200 ${
+        menuAnimDone ? "overflow-visible" : "overflow-hidden"
+      }`}
+    >
             <ul className="flex flex-col items-center py-6 gap-2">
               {navItems.map((item) => {
                 const sectionId = item.href.replace("#", "");
