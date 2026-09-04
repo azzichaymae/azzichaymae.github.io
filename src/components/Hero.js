@@ -3,13 +3,18 @@ import { motion } from "framer-motion";
 import { useI18n } from "../hooks/useI18n";
 import { Trans } from "react-i18next";
 import { FaArrowDown, FaDownload } from "react-icons/fa";
+import CVfr from "../assets/CV-fr.pdf"; 
+import CVen from "../assets/CV-en.pdf";
 
 export default function Hero() {
   const { t, i18n } = useI18n();
-
+const cvMap = {
+  CVfr: CVfr,
+  CVen: CVen,
+};
   const handleDownload = () => {
     const lang = i18n.language;
-    const fileName = lang === "fr" ? "/Chaymae AZZI-fr.pdf" : "/Chaymae AZZI - en.pdf";
+    const fileName = lang === "fr" ? cvMap.CVfr : cvMap.CVen;
     const link = document.createElement("a");
     link.href = fileName;
     link.download = fileName.split("/").pop();

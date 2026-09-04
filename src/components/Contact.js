@@ -20,7 +20,6 @@ const Contact = () => {
   CVfr: CVfr,
   CVen: CVen,
 };
- console.log("Current locale:", locale);
   const validationSchema = Yup.object({
     firstName: Yup.string().required(t("Contact.errorfn")),
     lastName: Yup.string().required(t("Contact.errorln")),
